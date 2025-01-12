@@ -79,19 +79,20 @@ section {
         margin-bottom: 15px;
     }
 
-    /* Make the navigation full-width and stack the items vertically */
+    /* Ensure the navigation menu is stacked vertically */
     nav {
         width: 100%;
-        flex-direction: column; /* Change direction to column to stack menu items */
+        flex-direction: column; /* Change to vertical stack */
         margin-top: 10px;
+        align-items: flex-start; /* Left align the items */
     }
 
     nav a {
-        display: block; /* Make the menu items block-level for stacking */
-        width: 100%; /* Full width of the screen */
+        display: block; /* Ensure each menu item is a block element */
+        width: 100%; /* Full width of the container */
         text-align: left;
         padding: 15px;
-        font-size: 20px; /* Increase font size for better readability */
+        font-size: 20px; /* Increase font size for readability */
         margin: 0;
     }
 
