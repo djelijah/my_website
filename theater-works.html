@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilija Djordjevic</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1><a href="index.html" class="name-link">Ilija Đorđević</a></h1>
+
+    <nav>
+        <a href="/Users/ilijadjordjevic/Website 2025/website content/aboutme.html" class="menu-item">
+            <span class="default-text">Identité</span>
+            <span class="hover-text">It’s all about me</span>
+        </a>
+        <a href="/Users/ilijadjordjevic/Website 2025/website content/theater-works.html" class="menu-item">
+            <span class="default-text">Théâtre</span>
+            <span class="hover-text">My daily bread</span>
+        </a>
+        <a href="#" class="menu-item">
+            <span class="default-text">Art Sonore</span>
+            <span class="hover-text">Sound for rich</span>
+        </a>
+        <a href="#" class="menu-item">
+            <span class="default-text">Sonpurson</span>
+            <span class="hover-text">Only for ears</span>
+        </a>
+        <a href="#" class="menu-item">
+            <span class="default-text">Le son pour l'image</span>
+            <span class="hover-text">Sound for eyes</span>
+        </a>
+        <a href="/Users/ilijadjordjevic/Website 2025/website content/contact.html" class="menu-item">
+            <span class="default-text">Contact</span>
+            <span class="hover-text">Reach out to me</span>
+        </a>
+    </nav>
+</header>
+
+<section class="slideshow-gallery">
+    <div class="slideshow-container">
+        <div class="slide fade">
+            <img src="image1.jpg" alt="Image 1">
+            <div class="caption">The Story of A Mother</div>
+            <audio class="slide-audio">
+                <source src="audio1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="slide fade">
+            <img src="image2.jpg" alt="Image 2">
+            <div class="caption">Amerika</div>
+            <audio class="slide-audio">
+                <source src="audio2.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="slide fade">
+            <img src="image3.jpg" alt="Image 3">
+            <div class="caption">Peer Gynt</div>
+            <audio class="slide-audio">
+                <source src="audio3.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+    <div class="dots-container">
+        <span class="dot" onclick="setSlide(1)"></span>
+        <span class="dot" onclick="setSlide(2)"></span>
+        <span class="dot" onclick="setSlide(3)"></span>
+    </div>
+</section>
+
+
+<script src="script.js"></script>
+</body>
+</html>

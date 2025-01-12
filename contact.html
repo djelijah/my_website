@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write to me</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+
+<header>
+    <h1><a href="index.html" class="name-link">Ilija Đorđević</a></h1>
+    
+    <nav>
+        <a href="aboutme.html" class="menu-item">
+            <span class="default-text">Identité</span>
+            <span class="hover-text">It’s all about me</span>
+        </a>
+        <a href="theater-works.html" class="menu-item">
+            <span class="default-text">Théâtre</span>
+            <span class="hover-text">My daily bread</span>
+        </a>
+        <a href="#" class="menu-item">
+            <span class="default-text">Art Sonore</span>
+            <span class="hover-text">Sound for rich</span>
+        </a>
+        <a href="#" class="menu-item">
+            <span class="default-text">Sonpurson</span>
+            <span class="hover-text">Only for ears</span>
+        </a>
+        <a href="#" class="menu-item">
+            <span class="default-text">Le son pour l'image</span>
+            <span class="hover-text">Sound for eyes</span>
+        </a>
+        <a href="contact.html" class="menu-item">
+            <span class="default-text">Contact</span>
+            <span class="hover-text">Reach out to me</span>
+        </a>
+    </nav>
+</header>
+
+<div class="container">
+    <h1>Write to me</h1>
+    <form action="submit_form.php" method="POST"> <!-- Change action to your form handling script -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+</div>
+
+</body>
+</html>
