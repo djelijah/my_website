@@ -82,13 +82,13 @@ section {
     /* Make the navigation full-width and stack the items vertically */
     nav {
         width: 100%;
-        justify-content: flex-start;
+        flex-direction: column; /* Change direction to column to stack menu items */
         margin-top: 10px;
     }
 
     nav a {
         display: block; /* Make the menu items block-level for stacking */
-        width: 100%;
+        width: 100%; /* Full width of the screen */
         text-align: left;
         padding: 15px;
         font-size: 20px; /* Increase font size for better readability */
