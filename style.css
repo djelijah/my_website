@@ -12,7 +12,7 @@ header {
     align-items: center;
     padding: 20px;
     margin-left: 20px;
-    /* Removed justify-content: space-between */
+    justify-content: space-between; /* Added for spacing between title and menu */
 }
 
 header h1 {
@@ -24,7 +24,6 @@ header h1 {
 nav {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Ensure menu items are left-aligned */
 }
 
 nav a {
