@@ -1,34 +1,48 @@
-let slideIndex = 1;
-showSlides(slideIndex);
-
-function changeSlide(n) {
-    showSlides(slideIndex += n);
-}
-
-function setSlide(n) {
-    showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
+document.addEventListener("DOMContentLoaded", () => {
+    let slideIndex = 0;
     const slides = document.querySelectorAll(".slide");
     const dots = document.querySelectorAll(".dot");
-    const audios = document.querySelectorAll(".slide-audio");
+    const iframes = document.querySelectorAll(".slide iframe");
 
-    if (n > slides.length) slideIndex = 1;
-    if (n < 1) slideIndex = slides.length;
+    function stopVideos() {
+        iframes.forEach(iframe => {
+            const src = iframe.src;
+            iframe.src = "";
+            iframe.src = src;
+        });
+    }
 
-    // Stop all audio and hide all slides
-    slides.forEach(slide => slide.style.display = "none");
-    audios.forEach(audio => {
-        audio.pause();
-        audio.currentTime = 0;
+    function showSlides(index) {
+        if (index >= slides.length) slideIndex = 0;
+        if (index < 0) slideIndex = slides.length - 1;
+        
+        slides.forEach((slide, i) => {
+            slide.style.display = i === slideIndex ? "block" : "none";
+        });
+        
+        dots.forEach((dot, i) => {
+            dot.classList.remove("active");
+            if (i === slideIndex) dot.classList.add("active");
+        });
+        
+        stopVideos();
+    }
+
+    function changeSlide(n) {
+        slideIndex += n;
+        showSlides(slideIndex);
+    }
+
+    function setSlide(n) {
+        slideIndex = n;
+        showSlides(slideIndex);
+    }
+
+    document.querySelector(".prev").addEventListener("click", () => changeSlide(-1));
+    document.querySelector(".next").addEventListener("click", () => changeSlide(1));
+    dots.forEach((dot, i) => {
+        dot.addEventListener("click", () => setSlide(i));
     });
 
-    // Show the current slide and play its audio
-    slides[slideIndex - 1].style.display = "block";
-    audios[slideIndex - 1].play();
-
-    // Highlight the current dot
-    dots.forEach(dot => dot.classList.remove("active"));
-    dots[slideIndex - 1].classList.add("active");
-}
+    showSlides(slideIndex);
+});

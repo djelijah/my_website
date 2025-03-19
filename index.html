@@ -8,6 +8,94 @@
 </head>
 <body>
 
+    <canvas id="waveCanvas"></canvas>
+    <audio id="backgroundMusic" preload="auto" loop></audio>
+
+    <script>
+        const canvas = document.getElementById('waveCanvas');
+        const ctx = canvas.getContext('2d');
+    
+        // Set canvas dimensions
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    
+        let waveClusters = []; // Array to hold wave clusters
+        let clusterCount = 25; // Number of clusters
+    
+        // Create wave clusters
+        for (let i = 0; i < clusterCount; i++) {
+            let waves = [];
+            let waveCount = Math.floor(Math.random() * 3) + 3; // Random number of waves per cluster
+    
+            for (let j = 0; j < waveCount; j++) {
+                waves.push({
+                    amplitude: Math.random() * 20 + 10, // Random amplitude
+                    frequency: Math.random() * 0.02 + 0.01, // Random frequency
+                    phase: Math.random() * 2 * Math.PI, // Random phase
+                    color: `hsl(${Math.random() * 360}, 100%, 50%)`, // Random color
+                    verticalOffset: Math.random() * canvas.height // Random vertical starting position
+                });
+            }
+    
+            // Random position for the cluster
+            let position = {
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height
+            };
+    
+            waveClusters.push({ waves, position });
+        }
+    
+        function drawWaves() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+    
+            waveClusters.forEach(cluster => {
+                cluster.waves.forEach(wave => {
+                    ctx.beginPath();
+                    ctx.moveTo(0, cluster.position.y + wave.verticalOffset); // Start at the cluster's y position plus vertical offset
+    
+                    for (let x = 0; x < canvas.width; x++) {
+                        const y = cluster.position.y + wave.verticalOffset + Math.sin(x * wave.frequency + wave.phase) * wave.amplitude;
+                        ctx.lineTo(x, y);
+                    }
+    
+                    ctx.strokeStyle = wave.color; // Use the wave's color
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                    wave.phase += 0.1; // Move the wave horizontally
+                    wave.verticalOffset += Math.sin(wave.phase) * 0.5; // Move the wave vertically
+                });
+            });
+    
+            requestAnimationFrame(drawWaves); // Call the function again for animation
+        }
+    
+        drawWaves(); // Start the animation
+    
+        // Adjust canvas size on window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+         // Array of audio file paths
+         const audioFiles = [
+            'sample1.mp3',
+            'sample2.mp3',
+            'sample3.mp3',
+            // Add more audio files as needed
+        ];
+
+        // Play a random audio when the page loads
+        window.addEventListener('load', () => {
+            const audio = document.getElementById('backgroundMusic');
+            const randomIndex = Math.floor(Math.random() * audioFiles.length);
+            audio.src = audioFiles[randomIndex]; // Set the source to a random audio file
+            audio.play().catch(error => {
+                console.log('Audio playback failed:', error);
+            });
+        });
+    </script>
+
 <header>
     <h1><a href="index.html" class="name-link">Ilija Đorđević</a></h1>
 
@@ -16,7 +104,7 @@
             <span class="default-text">Identité</span>
             <span class="hover-text">It’s all about me</span>
         </a>
-        <a href="theater-works.html" class="menu-item">
+        <a href="/Users/ilijadjordjevic/Website 2025/website content/theater-works.html" class="menu-item">
             <span class="default-text">Théâtre</span>
             <span class="hover-text">My daily bread</span>
         </a>
